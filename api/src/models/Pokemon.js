@@ -8,5 +8,23 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    hp: {
+      type: DataTypes.INTEGER
+    },
+    strength: {
+      type: DataTypes.INTEGER
+    },
+    defense: {
+      type: DataTypes.INTEGER
+    },
+    speed: {
+      type: DataTypes.INTEGER
+    },
+    height: {
+      type: DataTypes.INTEGER
+    },
+    weigth: {
+      type: DataTypes.INTEGER
+    }
   });
 };
