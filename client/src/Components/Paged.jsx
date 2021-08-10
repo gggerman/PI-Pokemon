@@ -12,7 +12,7 @@ export default function Paged({ pokemonsPerPage, allPokemons, paged}) {
       <span className="paged">
         { pageNumbers && pageNumbers.map(number => (
           <span className="number" key={number}>
-            <a onClick={() => paged(number)}>{number}</a>
+            <button onClick={() => paged(number)}>{number}</button>
           </span>
         ))}
       </span>

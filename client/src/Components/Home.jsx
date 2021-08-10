@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getPokemons, filterCreated, orderByName } from '../Redux/actions';
+import { getPokemons, filterCreated, orderByName, orderByAttack } from '../Redux/actions';
 import { Link } from 'react-router-dom';
 import Card from './Card.jsx';
 import Paged from './Paged.jsx';
@@ -27,15 +27,22 @@ export default function Home() {
 function handleCreate(e) {
   e.preventDefault();
   dispatch(getPokemons());
-}
+};
 
 function handleFilterCreated(e) {
   dispatch(filterCreated(e.target.value))
-}
+};
 
 function handleSort(e) {
   e.preventDefault();
   dispatch(orderByName(e.target.value));
+  setCurrentPage(1);
+  setOrden(`Ordenado ${e.target.value}`)
+};
+
+function handleAttack(e) {
+  e.preventDefault();
+  dispatch(orderByAttack(e.target.value));
   setCurrentPage(1);
   setOrden(`Ordenado ${e.target.value}`)
 }
@@ -46,14 +53,18 @@ function handleSort(e) {
       <h1>Pokemon</h1>
       <button onClick={e => handleCreate(e)}>Load Pokemons Again</button>
       <div>
-        <select onChange={e => handleSort(e)}>
-          <option value='asc'>Ascendent</option>
-          <option value='desc'>Descendent</option>
-        </select>
         <select onChange={e => handleFilterCreated(e)}>
           <option value='All'>All</option>
           <option value='created'>Created</option>
           <option value='api'>Existent</option>
+        </select>
+        <select onChange={e => handleSort(e)}>
+          <option value='nameAsc'>Name ↑</option>
+          <option value='nameDesc'>Name ↓</option>
+        </select>
+        <select onChange={e => handleAttack(e)}>
+          <option value='atkAsc'>Attack ↑</option>
+          <option value='atkDesc'>Attack ↓</option>
         </select>
         <Paged
         pokemonsPerPage = {pokemonsPerPage}

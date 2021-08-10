@@ -24,4 +24,11 @@ export function orderByName(payload) {
   }
 }
 
+export function orderByAttack(payload) {
+  return {
+    type: 'ORDER_BY_ATTACK',
+    payload
+  }
+}
+
 // export function filterPokemonsBy
