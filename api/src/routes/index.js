@@ -23,8 +23,7 @@ const getPokemonsAPI = async (max, min) => {
                     speed: pk.data.stats[5].base_stat,
                     height: pk.data.height,
                     weight: pk.data.weight,
-                    image: pk.data.sprites.versions["generation-v"]["black-white"].animated.front_default,
-                    imageBack: pk.data.sprites.versions["generation-v"]["black-white"].animated.back_default,
+                    image: pk.data.sprites.other["official-artwork"].front_default,
                     imageFrontDefault: pk.data.sprites.front_default,
                     imageBackDefault: pk.data.sprites.back_default,
                     types: pk.data.types.map((t) => {
