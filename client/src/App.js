@@ -2,6 +2,8 @@ import React from 'react'
 import { Route, Switch } from 'react-router-dom';
 import LandingPage from './Components/LandingPage.jsx'
 import Home from './Components/Home.jsx';
+import PokemonCreation from './Components/PokemonCreation.jsx';
+import Details from './Components/Details.jsx';
 import './App.css';
 
 function App() {
@@ -10,6 +12,8 @@ function App() {
       <Switch>
         <Route exact path='/' component={LandingPage} />
         <Route path='/home' component={Home} />
+        <Route path='/pokemon' component={PokemonCreation}/>
+        <Route path='/home/:idPokemon' component={Details}/>
       </Switch>
     </div>
   );

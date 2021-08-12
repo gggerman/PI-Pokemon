@@ -5,6 +5,7 @@ import { getPokemons, filterCreated, orderByName, orderByAttack } from '../Redux
 import { Link } from 'react-router-dom';
 import Card from './Card.jsx';
 import Paged from './Paged.jsx';
+import SearchBar from './SearchBar.jsx';
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -49,9 +50,11 @@ function handleAttack(e) {
 
   return (
     <div>
-      <Link to="/pokemons">Create Pokemon</Link>
-      <h1>Pokemon</h1>
-      <button onClick={e => handleCreate(e)}>Load Pokemons Again</button>
+      <div>
+        <img src="http://pngimg.com/uploads/pokemon_logo/pokemon_logo_PNG9.png" alt="pokemon" />
+      </div>
+      <Link to="/pokemon"><button>Create Pokemon</button></Link>
+      <button onClick={e => handleCreate(e)}>Reset Filters</button>
       <div>
         <select onChange={e => handleFilterCreated(e)}>
           <option value='All'>All</option>
@@ -66,6 +69,7 @@ function handleAttack(e) {
           <option value='atkAsc'>Attack ↑</option>
           <option value='atkDesc'>Attack ↓</option>
         </select>
+        <SearchBar />
         <Paged
         pokemonsPerPage = {pokemonsPerPage}
         allPokemons = {allPokemons.length}
