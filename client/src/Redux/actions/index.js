@@ -48,6 +48,13 @@ export function postPokemon(payload) {
   }
 }
 
+export function filterByType(payload) {
+  return {
+    type: 'FILTER_BY_TYPE',
+    payload
+  }
+}
+
 export function filterCreated(payload) {
   return {
     type: 'FILTER_CREATED',

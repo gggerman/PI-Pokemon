@@ -3,43 +3,80 @@ import { Link, useHistory } from 'react-router-dom';
 import { postPokemon, getTypes } from '../Redux/actions/index.js';
 import { useDispatch, useSelector } from 'react-redux';
 
+function validate(input) {
+  let errors = {};
+  if (!input.name) {
+    errors.name = "A name is required."
+  }
+  return errors;
+}
+
 export default function PokemonCreation() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const types = useSelector(state => state.types);
 
+  const [errors, setErrors] = useState({})
   const [input, setInput] = useState({
     name: "",
-    types: [],
+    type: [],
     hp: "",
     attack: "",
     defense: "",
     speed: "",
     weight: "",
-    heigth: ""
+    height: "",
+    image: ""
   });
+
+  useEffect(() => {
+    dispatch(getTypes());
+  }, []);
 
   function handleChange(e) {
     setInput({
       ...input,
       [e.target.name]: e.target.value
     });
+    setErrors(validate({
+      ...input,
+      [e.target.name]: e.target.value
+    }));
     console.log(input);
+  }
+
+
+  function handleSelect(e) {
+    setInput({
+      ...input,
+      type: [...input.type, e.target.value]
+    });
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(postPokemon());
+    console.log(input);
+    dispatch(postPokemon(input));
+    alert("¡Pokemon created!");
+    setInput({
+      name: "",
+      type: [],
+      hp: "",
+      attack: "",
+      defense: "",
+      speed: "",
+      weight: "",
+      height: "",
+      image: ""
+    });
+    history.push('/home');
   }
-
-  useEffect(() => {
-    dispatch(getTypes());
-  }, []);
 
   return (
     <div>
       <Link to="/home"><button>Home</button></Link>
       <h1>Create a Pokemon</h1>
-      <form>
+      <form onSubmit={e => handleSubmit(e)}>
         <div>
           <label>Name:</label>
           <input
@@ -49,9 +86,12 @@ export default function PokemonCreation() {
             onChange={e => handleChange(e)}
           />
         </div>
+        {errors.name && (
+          <span className="error">{errors.name}</span>
+        )}
         <div>
           <label>Types:</label>
-          <select>
+          <select onChange={e => handleSelect(e)}>
             {types.map(type => (
               <option value={type.name}>{type.name.charAt(0).toUpperCase() + type.name.slice(1)}</option>
             ))}
@@ -103,11 +143,11 @@ export default function PokemonCreation() {
           />
         </div>
         <div>
-          <label>Heigth:</label>
+          <label>Height:</label>
           <input
             type="number"
-            value={input.heigth}
-            name="heigth"
+            value={input.height}
+            name="height"
             onChange={e => handleChange(e)}
           />
         </div>
@@ -120,6 +160,7 @@ export default function PokemonCreation() {
             onChange={e => handleChange(e)}
           />
         </div>
+        <div>{input.type.map(e => e.charAt(0).toUpperCase() + e.slice(1) + " ")}</div>
         <button type="submit">Create</button>
       </form>
     </div>
