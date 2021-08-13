@@ -50,11 +50,11 @@ const getDbInfo = async () => {
         attributes: []
       }
     }
-  })
+  });
 }
 
 const getAllPokemons = async () => {
-  const apiInfo = await getPokemonsAPI(151, 0);
+  const apiInfo = await getPokemonsAPI(40, 0);
   const dbInfo = await getDbInfo();
   const infoResult = apiInfo.concat(dbInfo)
   return infoResult;
@@ -110,7 +110,7 @@ router.get('/types', async (req, res) => {
 });
 
 router.post('/pokemons', async (req, res) => {
-  const { name, hp, attack, defense, speed, height, weight, type } = req.body;
+  const { name, type, hp, attack, defense, speed, height, weight, image } = req.body;
 
   let pokemonCreated = await Pokemon.create({
       name,
@@ -119,7 +119,8 @@ router.post('/pokemons', async (req, res) => {
       defense,
       speed,
       height,
-      weight
+      weight,
+      image
   });
 
   let typeDb = await Type.findAll({
