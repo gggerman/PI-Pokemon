@@ -1,7 +1,8 @@
 const initialState = {
   pokemons: [],
   allPokemons: [],
-  types: []
+  types: [],
+  details: []
 }
 
 function rootReducer(state = initialState, action) {
@@ -21,6 +22,11 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         types: action.payload
+      }
+    case 'GET_DETAILS':
+      return {
+        ...state,
+        details: action.payload
       }
     case 'FILTER_CREATED':
       const createdFilter = action.payload === 'created' ? state.allPokemons.filter(e => e.createdInDb) : state.allPokemons.filter(e => !e.createdInDb)

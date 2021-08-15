@@ -80,7 +80,7 @@ function handleAttack(e) {
             return (
               <Card
               name={e.name.charAt(0).toUpperCase() + e.name.slice(1)}
-              type={e.types.map((type, index) => type.name.charAt(0).toUpperCase() + type.name.slice(1) + " ")}
+              type={e.types.map(type => type.name.charAt(0).toUpperCase() + type.name.slice(1) + " ")}
               image={e.image} />
             )
           })

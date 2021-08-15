@@ -37,6 +37,20 @@ export function getTypes() {
   }
 }
 
+export function getDetails(id) {
+  return async function(dispatch) {
+    try {
+      var details = await axios.get("http://localhost:3001/pokemons/" + id);
+      return dispatch({
+        type: 'GET_DETAILS',
+        payload: details.data
+      })
+    } catch (e) {
+      console.log(e);
+    }
+  }
+}
+
 export function postPokemon(payload) {
   return async function(dispatch) {
     try {
