@@ -1,15 +1,17 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getPokemons, filterCreated, orderByName, orderByAttack } from '../Redux/actions';
+import { getPokemons, getTypes, filterCreated, filterByType, orderByName, orderByAttack } from '../Redux/actions';
 import { Link } from 'react-router-dom';
 import Card from './Card.jsx';
 import Paged from './Paged.jsx';
 import SearchBar from './SearchBar.jsx';
+import './Home.css';
 
 export default function Home() {
   const dispatch = useDispatch();
   const allPokemons = useSelector(state => state.pokemons);
+  const allTypes = useSelector(state => state.types);
   const [orden, setOrden] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [pokemonsPerPage, setPokemonsPerPage] = useState(9);
@@ -22,7 +24,8 @@ export default function Home() {
   }
 
   useEffect(() => {
-    dispatch(getPokemons())
+    dispatch(getPokemons());
+    dispatch(getTypes());
   }, [dispatch]);
 
 function handleCreate(e) {
@@ -32,6 +35,7 @@ function handleCreate(e) {
 
 function handleFilterCreated(e) {
   dispatch(filterCreated(e.target.value))
+  setCurrentPage(1);
 };
 
 function handleSort(e) {
@@ -48,43 +52,64 @@ function handleAttack(e) {
   setOrden(`Ordenado ${e.target.value}`)
 }
 
+function handleType(e) {
+  console.log(e.target.value)
+  dispatch(filterByType(e.target.value));
+  setCurrentPage(1);
+}
+
   return (
     <div>
+      <SearchBar />
       <div>
-        <img src="http://pngimg.com/uploads/pokemon_logo/pokemon_logo_PNG9.png" alt="pokemon" />
-      </div>
-      <Link to="/pokemon"><button>Create Pokemon</button></Link>
-      <button onClick={e => handleCreate(e)}>Reset Filters</button>
-      <div>
-        <select onChange={e => handleFilterCreated(e)}>
+        <div className="filters">
+          <select onChange={e => handleFilterCreated(e)}>
+            <option value='All'>All</option>
+            <option value='created'>Created</option>
+            <option value='api'>Existent</option>
+          </select>
+          <select onChange={e => handleSort(e)}>
+            <option value='nameAsc'>Name ↑</option>
+            <option value='nameDesc'>Name ↓</option>
+          </select>
+          <select onChange={e => handleAttack(e)}>
+            <option value='atkAsc'>Attack ↑</option>
+            <option value='atkDesc'>Attack ↓</option>
+          </select>
+          <select onChange={e => handleType(e)}>
           <option value='All'>All</option>
-          <option value='created'>Created</option>
-          <option value='api'>Existent</option>
-        </select>
-        <select onChange={e => handleSort(e)}>
-          <option value='nameAsc'>Name ↑</option>
-          <option value='nameDesc'>Name ↓</option>
-        </select>
-        <select onChange={e => handleAttack(e)}>
-          <option value='atkAsc'>Attack ↑</option>
-          <option value='atkDesc'>Attack ↓</option>
-        </select>
-        <SearchBar />
+          {
+            allTypes && allTypes.map(e => {
+              return (
+                <option value={e.name}>{e.name.charAt(0).toUpperCase() + e.name.slice(1)}</option>
+              )
+            })
+          }
+          </select>
+          <button className="resetButton" onClick={e => handleCreate(e)}>Reset Filters</button>
+        </div>
+        <div className="cards">
+        {
+          currentPokemons && currentPokemons.map(e => {
+            return (
+              <fragment>
+                <Link to={"/home/" + e.id}>
+                  <Card
+                  name={e.name.charAt(0).toUpperCase() + e.name.slice(1)}
+                  type={e.types.map(type => type.name.charAt(0).toUpperCase() + type.name.slice(1) + " ")}
+                  image={e.image}
+                  key={e.id} />
+                </Link>
+              </fragment>
+            )
+          })
+        }
+        </div>
         <Paged
         pokemonsPerPage = {pokemonsPerPage}
         allPokemons = {allPokemons.length}
         paged = {paged}
         />
-        {
-          currentPokemons && currentPokemons.map(e => {
-            return (
-              <Card
-              name={e.name.charAt(0).toUpperCase() + e.name.slice(1)}
-              type={e.types.map(type => type.name.charAt(0).toUpperCase() + type.name.slice(1) + " ")}
-              image={e.image} />
-            )
-          })
-        }
       </div>
     </div>
   )

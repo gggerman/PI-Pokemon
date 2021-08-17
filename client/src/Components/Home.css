@@ -1,0 +1,30 @@
+/* body {
+  background-image: url("../assets/65456.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+} */
+
+.filters {
+  position: relative;
+  right: 287px;
+}
+
+.cards {
+  border-radius: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.resetButton {
+  background-color: #CE1131;
+  color: yellow;
+  border-radius: 20px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.resetButton:hover {
+  transform: scale(1.08);
+}

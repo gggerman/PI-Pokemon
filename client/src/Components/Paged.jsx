@@ -1,4 +1,5 @@
 import React from 'react';
+import './Paged.css'
 
 export default function Paged({ pokemonsPerPage, allPokemons, paged}) {
   const pageNumbers = [];

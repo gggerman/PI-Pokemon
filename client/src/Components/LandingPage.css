@@ -1,0 +1,17 @@
+body {
+  background-image: url("../assets/641968.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+.enterButton {
+  position: absolute;
+  top: 300px;
+  right: 640px;
+  transition: 0.3s;
+}
+
+.enterButton:hover {
+  transform: scale(1.10);
+}

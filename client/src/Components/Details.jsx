@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDetails } from '../Redux/actions/index.js';
 import { useEffect } from 'react';
+import SearchBar from './SearchBar.jsx';
 
 export default function Details(props) {
   const dispatch = useDispatch();
@@ -15,10 +16,11 @@ export default function Details(props) {
 
   return (
     <div>
+      <SearchBar />
       {
         myPokemon.length ?
         <div>
-          <h1>{myPokemon[0].name}</h1>
+          <h1>{myPokemon[0].name.charAt(0).toUpperCase() + myPokemon[0].name.slice(1)}</h1>
           <img src={myPokemon[0].image} alt="not found"/>
           <h3>{myPokemon[0].types.map(type => type.name.charAt(0).toUpperCase() + type.name.slice(1) + " ")}</h3>
           <p>#{myPokemon[0].id}</p>

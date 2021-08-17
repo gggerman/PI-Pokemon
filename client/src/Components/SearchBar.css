@@ -1,0 +1,24 @@
+.navBar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: .2em solid black;
+  background-color: #CE1131;
+}
+
+/* .logo {
+  display: flex;
+  justify-content: center;
+} */
+
+/* .searchBar {
+  display: flex;
+}
+
+.searchButton {
+  display: flex;
+}
+
+/* .createButton {
+  display: flex;
+} */

@@ -1,0 +1,5 @@
+.paged {
+  display: flex;
+  justify-content: center;
+  left: 200px;
+}

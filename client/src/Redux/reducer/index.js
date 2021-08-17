@@ -28,6 +28,16 @@ function rootReducer(state = initialState, action) {
         ...state,
         details: action.payload
       }
+    case 'FILTER_BY_TYPE':
+      let typeFilter = state.types.map(type => {
+        if(action.payload === type.name) {
+          state.allPokemons.filter(pkm => pkm.types[0].name === type.name || pkm.types[1].name === type.name)
+        }
+      })
+      return {
+        ...state,
+        pokemons: action.payload === 'All' ? state.allPokemons : typeFilter
+      }
     case 'FILTER_CREATED':
       const createdFilter = action.payload === 'created' ? state.allPokemons.filter(e => e.createdInDb) : state.allPokemons.filter(e => !e.createdInDb)
       return {

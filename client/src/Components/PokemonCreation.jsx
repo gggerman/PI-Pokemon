@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { postPokemon, getTypes } from '../Redux/actions/index.js';
 import { useDispatch, useSelector } from 'react-redux';
+import SearchBar from './SearchBar.jsx';
+import './PokemonCreation.css';
 
 function validate(input) {
   let errors = {};
@@ -74,9 +76,9 @@ export default function PokemonCreation() {
 
   return (
     <div>
-      <Link to="/home"><button>Home</button></Link>
+      <SearchBar />
       <h1>Create a Pokemon</h1>
-      <form onSubmit={e => handleSubmit(e)}>
+      <form className="form" onSubmit={e => handleSubmit(e)}>
         <div>
           <label>Name:</label>
           <input
