@@ -40,10 +40,16 @@ export function getTypes() {
 export function getDetails(id) {
   return async function(dispatch) {
     try {
-      var details = await axios.get("http://localhost:3001/pokemons/" + id);
+      if(id) {
+        var details = await axios.get("http://localhost:3001/pokemons/" + id);
+        return dispatch({
+          type: 'GET_DETAILS',
+          payload: details.data
+        })
+      }
       return dispatch({
         type: 'GET_DETAILS',
-        payload: details.data
+        payload: []
       })
     } catch (e) {
       console.log(e);
