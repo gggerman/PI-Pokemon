@@ -1,5 +1,7 @@
-.paged {
-  display: flex;
-  justify-content: center;
-  left: 200px;
+.number {
+  transition: 0.3s;
+}
+
+.number:hover {
+  transform: scale(1.08);
 }

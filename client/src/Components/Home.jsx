@@ -90,19 +90,21 @@ function handleType(e) {
         </div>
         <div className="cards">
         {
-          currentPokemons && currentPokemons.map(e => {
+          currentPokemons.length ?
+          currentPokemons.map(e => {
             return (
-              <fragment>
-                <Link to={"/home/" + e.id}>
+              <div>
+                <Link to={"/home/" + e.id} className="card">
                   <Card
+                  id={e.id}
                   name={e.name.charAt(0).toUpperCase() + e.name.slice(1)}
                   type={e.types.map(type => type.name.charAt(0).toUpperCase() + type.name.slice(1) + " ")}
                   image={e.image}
                   key={e.id} />
                 </Link>
-              </fragment>
+              </div>
             )
-          })
+          }) : <img src="https://i.gifer.com/4OKl.gif" alt="pokemon"/>
         }
         </div>
         <Paged

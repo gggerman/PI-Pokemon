@@ -6,12 +6,20 @@ body {
 }
 
 .enterButton {
+  display: flex;
   position: absolute;
-  top: 300px;
+  top: 230px;
   right: 640px;
+  text-decoration: none;
+  color: inherit;
   transition: 0.3s;
 }
 
 .enterButton:hover {
   transform: scale(1.10);
+}
+
+h2 {
+  position: relative;
+  top: 10px;
 }

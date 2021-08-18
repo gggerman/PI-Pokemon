@@ -1,0 +1,11 @@
+.detailsCard {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 20px;
+  background-color: #CE1131;
+  position: relative;
+  top: 10px;
+  left: 270px;
+  width: 800px;
+}

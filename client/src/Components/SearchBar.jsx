@@ -25,7 +25,7 @@ export default function SearchBar() {
     <div className="navBar">
       <Link to="/home">
         <div className="logo">
-          <img src="http://pngimg.com/uploads/pokemon_logo/pokemon_logo_PNG9.png" alt="pokemon" width="25%" height="25%"/>
+          <img src="http://pngimg.com/uploads/pokemon_logo/pokemon_logo_PNG9.png" alt="pokemon" width="35%" height="35%"/>
         </div>
       </Link>
       <Link to="/creation"><button className="createButton">Create Pokemon</button></Link>

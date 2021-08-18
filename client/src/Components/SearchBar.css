@@ -6,19 +6,20 @@
   background-color: #CE1131;
 }
 
-/* .logo {
-  display: flex;
-  justify-content: center;
-} */
-
-/* .searchBar {
-  display: flex;
+.logo {
+  position: relative;
+  right: 90px;
 }
 
-.searchButton {
-  display: flex;
+.createButton {
+  position: relative;
+  right: 130px;
+  padding: 12px 29px;
+  font-size: 16px;
+  border-radius: 20px;
+  transition: 0.3s;
 }
 
-/* .createButton {
-  display: flex;
-} */
+.createButton:hover {
+  transform: scale(1.08);
+}

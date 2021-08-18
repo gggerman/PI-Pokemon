@@ -18,13 +18,18 @@
 }
 
 .resetButton {
-  background-color: #CE1131;
-  color: yellow;
-  border-radius: 20px;
-  font-weight: bold;
+  /* background-color: #CE1131;
+  color: yellow; */
+  /* border-radius: 20px; */
+  /* font-weight: bold; */
   transition: 0.3s;
 }
 
 .resetButton:hover {
   transform: scale(1.08);
+}
+
+.card {
+  text-decoration: none;
+  color: inherit;
 }

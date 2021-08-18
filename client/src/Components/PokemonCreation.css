@@ -1,5 +1,9 @@
 .form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  background-color: #CE1131;
+  position: relative;
+  border-radius: 20px;
+  top: 70px;
+  left: 450px;
+  width: 450px;
+  height: 330px;
 }
