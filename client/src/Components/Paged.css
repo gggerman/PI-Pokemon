@@ -1,7 +1,23 @@
+.paged {
+  display: flex;
+  justify-content: center;
+  margin-top: 35px;
+}
+
 .number {
+  background-color: #CE1131;
+  margin: 3px;
+  width: 2rem;
+  height: 25px;
+  border-radius: 13px;
   transition: 0.3s;
 }
 
 .number:hover {
-  transform: scale(1.08);
+  transform: scale(1.30);
+}
+
+.link {
+  text-decoration: none;
+  color: inherit;
 }

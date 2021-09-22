@@ -63,11 +63,13 @@ function handleType(e) {
       <SearchBar />
       <div>
         <div className="filters">
+          <span className="filtersLetters"> Created/Existent: </span>
           <select onChange={e => handleFilterCreated(e)}>
             <option value='All'>All</option>
             <option value='created'>Created</option>
             <option value='api'>Existent</option>
           </select>
+          <span className="filtersLetters"> Sort By: </span>
           <select onChange={e => handleSort(e)}>
             <option value='nameAsc'>Name ↑</option>
             <option value='nameDesc'>Name ↓</option>
@@ -76,6 +78,7 @@ function handleType(e) {
             <option value='atkAsc'>Attack ↑</option>
             <option value='atkDesc'>Attack ↓</option>
           </select>
+          <span className="filtersLetters"> Type: </span>
           <select onChange={e => handleType(e)}>
           <option value='All'>All</option>
           {
@@ -88,6 +91,11 @@ function handleType(e) {
           </select>
           <button className="resetButton" onClick={e => handleCreate(e)}>Reset Filters</button>
         </div>
+        <Paged className="pagedTop"
+        pokemonsPerPage = {pokemonsPerPage}
+        allPokemons = {allPokemons.length}
+        paged = {paged}
+        />
         <div className="cards">
         {
           currentPokemons.length ?

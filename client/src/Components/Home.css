@@ -6,8 +6,13 @@
 } */
 
 .filters {
-  position: relative;
-  right: 287px;
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}
+
+.filtersLetters {
+  margin: 2px;
 }
 
 .cards {
@@ -19,9 +24,9 @@
 
 .resetButton {
   /* background-color: #CE1131;
-  color: yellow; */
-  /* border-radius: 20px; */
-  /* font-weight: bold; */
+  color: yellow;
+  border-radius: 20px;
+  font-weight: bold; */
   transition: 0.3s;
 }
 
