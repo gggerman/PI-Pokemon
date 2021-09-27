@@ -1,7 +1,7 @@
 # PokeApp
 
 <p align="left">
-  <img height="150" src="./pokemon.png" />
+  <img height="150" src="./Pokemon.png" />
 </p>
 
 ## In this project you will be able to:
