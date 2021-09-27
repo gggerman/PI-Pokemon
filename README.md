@@ -12,7 +12,7 @@
 - Create a new Pokemon.
 - Search for a specific Pokemon.
 
-## Instruccions to run the project.
+## Instruccions to run this project.
 
 ```javascript
 npm install
