@@ -14,3 +14,6 @@
 - PostgreSQL
 - Sequelize
 
+## Video:
+
+https://www.youtube.com/watch?v=hwYAy1Y1BGg
