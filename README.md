@@ -1,23 +1,16 @@
 # PokeApp
 
-<p align="left">
-  <img height="150" src="./Pokemon.png" />
+<p>
+  <img src="https://german-garcia-portfolio.vercel.app/static/media/PokeApp.01e1f8bf.png" />
 </p>
 
-## In this project you will be able to:
+## Technologies used:
 
-- See all the Pokemons of the first generation.
-- Filter them by type.
-- Sort them by name or attack.
-- Create a new Pokemon.
-- Search for a specific Pokemon.
+- Javascript
+- React
+- Redux
+- Axios
+- Express
+- PostgreSQL
+- Sequelize
 
-## Instruccions to run this project.
-
-```javascript
-npm install
-```
-
-```javascript
-npm start
-```
